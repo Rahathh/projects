@@ -2,7 +2,7 @@
 Author: Rahat Hassan
 Course: CSCI-135
 Instructor: Tong Yi
-Assignment: Lab1a
+Assignment: Project 1a
 
 Write a program 
 Task A: Convert Time from 24-hour Notation to 12-hour Notation
