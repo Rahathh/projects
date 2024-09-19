@@ -9,7 +9,7 @@ Task A: Convert Time from 24-hour Notation to 12-hour Notation
     Step 2: Input time in 24-hour notation to a string variable
     Step 3a: Find the index of colon (:) separating hour and minute
     Step 3b: Extract hour and minute
-*/
+//
 
 #include <iostream>
 #include <string>
