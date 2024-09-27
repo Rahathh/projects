@@ -47,4 +47,45 @@ void approach1(int startHour, int startMinute, int endHour, int endMinute) {
     cout << "Approach 1: Duration is " << durationHours << " hours and " << durationMinutes << " minutes.\n";
 }
 
+// Approach 2: Manually subtract hours and minutes
+void approach2(int startHour, int startMinute, int endHour, int endMinute) {
+    int durationHours = endHour - startHour;
+    int durationMinutes = endMinute - startMinute;
+
+    // If end minutes are smaller than start minutes, borrow 1 hour from end time
+    if (durationMinutes < 0) {
+        durationMinutes += 60;
+        durationHours -= 1;
+    }
+
+    // Output the result
+    cout << "Approach 2: Duration is " << durationHours << " hours and " << durationMinutes << " minutes.\n";
+}
+
+int main() {
+    int startHour, startMinute, endHour, endMinute;
+
+    // Input start time
+    cout << "Enter start time (hours minutes): ";
+    cin >> startHour >> startMinute;
+
+    // Input end time
+    cout << "Enter end time (hours minutes): ";
+    cin >> endHour >> endMinute;
+
+    // Check if start time is strictly later than end time (for both approaches)
+    if (startHour > endHour || (startHour == endHour && startMinute > endMinute)) {
+        cout << "invalid input\n";
+        return -1;
+    }
+
+    // Calculate and display using Approach 1
+    approach1(startHour, startMinute, endHour, endMinute);
+
+    // Calculate and display using Approach 2
+    approach2(startHour, startMinute, endHour, endMinute);
+
+    return 0;
+}
+
 
