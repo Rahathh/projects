@@ -23,6 +23,8 @@ Task A: Convert Time from 12-hour Notation to 24-hour Notation
 
 */
 #include <iostream>
+#include <string>
+
 using namespace std;
 
 // Converts hours and minutes to total minutes since midnight
@@ -31,21 +33,37 @@ int getMinutesFromMidnight(int hours, int minutes) {
 }
 
 int main() {
+    string startTime, endTime;
     int startHour, startMinute, endHour, endMinute;
 
     // Input start time in 24-hour format
-    cout << "Enter start time (hours minutes): ";
-    cin >> startHour >> startMinute;
-
+    cout << "Enter start time (hh:mm): ";
+    cin >> startTime;
+    
     // Input end time in 24-hour format
-    cout << "Enter end time (hours minutes): ";
-    cin >> endHour >> endMinute;
+    cout << "Enter end time (hh:mm): ";
+    cin >> endTime;
+
+    // Extract hours and minutes from start time
+    startHour = stoi(startTime.substr(0, startTime.find(':')));
+    startMinute = stoi(startTime.substr(startTime.find(':') + 1));
+
+    // Extract hours and minutes from end time
+    endHour = stoi(endTime.substr(0, endTime.find(':')));
+    endMinute = stoi(endTime.substr(endTime.find(':') + 1));
+
+    // Validate the time inputs
+    if (startHour < 0 || startHour > 23 || startMinute < 0 || startMinute > 59 ||
+        endHour < 0 || endHour > 23 || endMinute < 0 || endMinute > 59) {
+        cout << "invalid input" << endl;
+        return -1;
+    }
 
     // Convert start and end times to total minutes since midnight
     int startTimeInMinutes = getMinutesFromMidnight(startHour, startMinute);
     int endTimeInMinutes = getMinutesFromMidnight(endHour, endMinute);
 
-    // Handle cases where the end time is on the next day (after midnight)
+    // Handle cases where the end time is on the next day
     if (endTimeInMinutes < startTimeInMinutes) {
         cout << "invalid input" << endl;
         return -1;
@@ -63,6 +81,7 @@ int main() {
 
     return 0;
 }
+
 
 
 
