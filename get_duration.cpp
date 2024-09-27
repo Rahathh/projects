@@ -46,16 +46,15 @@ int main() {
         return -1;
     }
 
-    // Calculate the total minutes from midnight for both times
-    int startTimeInMinutes = getMinutes(startHour, startMinute);
-    int endTimeInMinutes = getMinutes(endHour, endMinute);
+    // Borrow an hour if start minutes are larger than end minutes
+    if (endMinute < startMinute) {
+        endMinute += 60;
+        endHour -= 1;  // Borrow an hour from end time
+    }
 
-    // Calculate the duration in minutes
-    int durationInMinutes = endTimeInMinutes - startTimeInMinutes;
-
-    // Extract hours and minutes from the duration
-    int durationHours = durationInMinutes / 60;
-    int durationMinutes = durationInMinutes % 60;
+    // Calculate the total duration
+    int durationHours = endHour - startHour;
+    int durationMinutes = endMinute - startMinute;
 
     // Output the duration
     cout << "Duration: " << durationHours << " hours and " << durationMinutes << " minutes" << endl;
