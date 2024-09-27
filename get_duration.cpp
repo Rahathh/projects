@@ -41,7 +41,7 @@ int main() {
     cin >> endHour >> endMinute;
 
     // Check if start time is strictly later than end time
-    if ((startHour > endHour) || (startHour == endHour && startMinute > endMinute)) {
+    if (startHour > endHour || (startHour == endHour && startMinute > endMinute)) {
         cout << "invalid input" << endl;
         return -1;
     }
@@ -62,4 +62,5 @@ int main() {
 
     return 0;
 }
+
 
