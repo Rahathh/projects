@@ -25,42 +25,26 @@ Task A: Convert Time from 12-hour Notation to 24-hour Notation
 #include <iostream>
 using namespace std;
 
+// Converts hours and minutes to total minutes
 int getMinutes(int hours, int minutes) {
-    return hours * 60 + minutes;  // Converts hours and minutes into total minutes
+    return hours * 60 + minutes;
 }
 
-int main() {
-    int startHour, startMinute, endHour, endMinute;
-
-    // Input start time
-    cout << "Enter start time (hours minutes): ";
-    cin >> startHour >> startMinute;
-
-    // Input end time
-    cout << "Enter end time (hours minutes): ";
-    cin >> endHour >> endMinute;
-
-    // Convert both start and end times to total minutes from midnight
+// Approach 1: Convert to minutes and calculate the difference
+void approach1(int startHour, int startMinute, int endHour, int endMinute) {
+    // Convert start and end times to total minutes since midnight
     int startTimeInMinutes = getMinutes(startHour, startMinute);
     int endTimeInMinutes = getMinutes(endHour, endMinute);
 
-    // Check if start time is later than end time
-    if (startTimeInMinutes > endTimeInMinutes) {
-        cout << "invalid input" << endl;
-        return -1;
-    }
-
-    // Calculate the duration in minutes
+    // Calculate duration in minutes
     int durationInMinutes = endTimeInMinutes - startTimeInMinutes;
 
     // Convert duration back to hours and minutes
     int durationHours = durationInMinutes / 60;
     int durationMinutes = durationInMinutes % 60;
 
-    // Output the duration
-    cout << "Duration: " << durationHours << " hours and " << durationMinutes << " minutes" << endl;
-
-    return 0;
+    // Output the result
+    cout << "Approach 1: Duration is " << durationHours << " hours and " << durationMinutes << " minutes.\n";
 }
 
 
