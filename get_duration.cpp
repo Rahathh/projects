@@ -47,17 +47,12 @@ int main() {
 
     // Handle cases where the end time is on the next day (after midnight)
     if (endTimeInMinutes < startTimeInMinutes) {
-        endTimeInMinutes += 24 * 60;  // Add 24 hours in minutes to the end time
+        cout << "invalid input" << endl;
+        return -1;
     }
 
     // Calculate the duration in minutes
     int durationInMinutes = endTimeInMinutes - startTimeInMinutes;
-
-    // Check if the start time is later than the end time for valid input (considering next day)
-    if (durationInMinutes < 0) {
-        cout << "invalid input" << endl;
-        return -1;
-    }
 
     // Convert duration into hours and minutes
     int durationHours = durationInMinutes / 60;
