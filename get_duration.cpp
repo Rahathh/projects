@@ -40,21 +40,22 @@ int main() {
     cout << "Enter end time (hours minutes): ";
     cin >> endHour >> endMinute;
 
-    // Check if start time is strictly later than end time
-    if (startHour > endHour || (startHour == endHour && startMinute > endMinute)) {
+    // Convert both start and end times to total minutes from midnight
+    int startTimeInMinutes = getMinutes(startHour, startMinute);
+    int endTimeInMinutes = getMinutes(endHour, endMinute);
+
+    // Check if start time is later than end time
+    if (startTimeInMinutes > endTimeInMinutes) {
         cout << "invalid input" << endl;
         return -1;
     }
 
-    // Borrow an hour if start minutes are larger than end minutes
-    if (endMinute < startMinute) {
-        endMinute += 60;
-        endHour -= 1;  // Borrow an hour from end time
-    }
+    // Calculate the duration in minutes
+    int durationInMinutes = endTimeInMinutes - startTimeInMinutes;
 
-    // Calculate the total duration
-    int durationHours = endHour - startHour;
-    int durationMinutes = endMinute - startMinute;
+    // Convert duration back to hours and minutes
+    int durationHours = durationInMinutes / 60;
+    int durationMinutes = durationInMinutes % 60;
 
     // Output the duration
     cout << "Duration: " << durationHours << " hours and " << durationMinutes << " minutes" << endl;
