@@ -116,3 +116,4 @@ int duration(string str) {
 
     return endTotalMinutes - startTotalMinutes; // Duration in minutes
 }
+
