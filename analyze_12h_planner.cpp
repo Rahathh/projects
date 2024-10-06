@@ -16,13 +16,15 @@ Task A: Convert Time from 12-hour Notation to 24-hour Notation
 #include <iostream>
 #include <fstream>
 #include <string>
+
 using namespace std;
 
-// Function declaration
+// Function declarations
 void hours_minutes_in_24h(string str, int& hours, int& minutes);
 int duration(string str);
 
 #ifndef UNIT_TEST
+
 int main() {
     // Step 1: Enter the file name
     string filename;
@@ -58,11 +60,15 @@ int main() {
             int activityDuration = duration(time);
             totalDuration += activityDuration;
 
+            // Calculate hours and minutes
             int hours = activityDuration / 60;
             int minutes = activityDuration % 60;
 
+            // Output each activity's duration correctly
             cout << time << "," << activity << "," << priority 
-                 << " hours and " << hours << " minutes" << endl;
+                 << " " << hours << " hour" << (hours == 1 ? "" : "s") 
+                 << " and " << minutes << " minute" << (minutes == 1 ? "" : "s") 
+                 << endl;
         }
     }
 
@@ -70,11 +76,14 @@ int main() {
     fin.close();
 
     // Step 8: Print total duration
-    cout << "Total duration: " << totalDuration / 60 << " hours and " 
-         << totalDuration % 60 << " minutes" << endl;
+    cout << "Total duration: " << totalDuration / 60 << " hour" 
+         << (totalDuration / 60 == 1 ? "" : "s") << " and " 
+         << totalDuration % 60 << " minute" 
+         << (totalDuration % 60 == 1 ? "" : "s") << endl;
 
     return 0;
 }
+
 #endif
 
 // Purpose: Convert 12-hour time notation to 24-hour notation
@@ -116,4 +125,5 @@ int duration(string str) {
 
     return endTotalMinutes - startTotalMinutes; // Duration in minutes
 }
+
 
